@@ -43,7 +43,7 @@ class Puzzle:
 
         if in_word:
             index = self._hidden_word.index(guess)
-            self._display_word[index].append(guess)
+            self._display_word[index] = guess
 
         return in_word
 
@@ -56,7 +56,7 @@ class Puzzle:
         Return:
             solved (boolean): whether Puzzle is solved
         """
-        solved = ("_" not in self._display_word)
+        solved = "_" in self._display_word
         return solved
 
     def get_display_word(self):

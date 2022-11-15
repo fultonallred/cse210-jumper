@@ -47,13 +47,15 @@ class Director:
         """
         if not self._is_playing:
             return
-            
+
         # Get info from Puzzle and Jumper.
         display_word = self._puzzle.get_display_word()
         jumper_parts = self._jumper.get_parts()
 
         # Display info to user and get input.
         self._terminal_service.write_display_word(display_word)
+        print()
+        print()
         self._terminal_service.draw_jumper(jumper_parts)
         self._guess = self._terminal_service.read_text("Guess a letter [a-z]: ")
         
@@ -71,7 +73,10 @@ class Director:
         if not correct_guess:
             self._jumper.remove_part()
 
+        # Check for a gameover.
         self._is_playing = self._puzzle.check_solved()
+        if not self._is_playing:
+            return
         self._is_playing = self._jumper.check_alive()
         
     def _do_outputs(self):
