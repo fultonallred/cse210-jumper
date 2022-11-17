@@ -31,7 +31,7 @@ class Jumper:
         """
         alive = (len(self._parts) > 3)
         if not alive:
-            self._parts[4] = "X"
+            self._parts[0] = "  X"
         return alive
 
     def get_parts(self):
