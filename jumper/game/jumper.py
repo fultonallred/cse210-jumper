@@ -30,6 +30,8 @@ class Jumper:
             alive (boolean): Whether Jumper is alive
         """
         alive = (len(self._parts) > 3)
+        if not alive:
+            self._parts[4] = "X"
         return alive
 
     def get_parts(self):

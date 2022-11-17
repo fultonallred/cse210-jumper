@@ -16,7 +16,7 @@ class Puzzle:
         Args:
             self (Puzzle): an instance of Puzzle
         """
-        self._word_list = ["dog", "cat", "mouse", "frog"]
+        self._word_list = ["moose"]
         self._hidden_word = ""
         self._display_word = []
         self._incorrect_guesses = ""
@@ -39,12 +39,12 @@ class Puzzle:
         Return:
             in_word (boolean): whether the guess is in the hidden word or not
         """
-        in_word = (guess in self._hidden_word)
+        in_word = guess in self._hidden_word
 
-        if in_word:
-            index = self._hidden_word.index(guess)
-            self._display_word[index] = guess
-
+        for i in range(len(self._hidden_word)):
+            if guess == self._hidden_word[i]:
+                self._display_word[i] = guess
+                
         return in_word
 
     def check_solved(self):
